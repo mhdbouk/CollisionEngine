@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collider", "Collider\Collider.csproj", "{BE252ED9-0AA7-4916-BF8E-8EEF4819052A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{5BA122AC-A32E-4E1A-BAC3-0571F1399D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient", "BlazorClient\BlazorClient.csproj", "{703B150E-1875-4E7B-A6D0-C7E64499F353}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE252ED9-0AA7-4916-BF8E-8EEF4819052A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE252ED9-0AA7-4916-BF8E-8EEF4819052A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE252ED9-0AA7-4916-BF8E-8EEF4819052A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE252ED9-0AA7-4916-BF8E-8EEF4819052A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA122AC-A32E-4E1A-BAC3-0571F1399D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA122AC-A32E-4E1A-BAC3-0571F1399D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA122AC-A32E-4E1A-BAC3-0571F1399D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA122AC-A32E-4E1A-BAC3-0571F1399D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703B150E-1875-4E7B-A6D0-C7E64499F353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703B150E-1875-4E7B-A6D0-C7E64499F353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703B150E-1875-4E7B-A6D0-C7E64499F353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703B150E-1875-4E7B-A6D0-C7E64499F353}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

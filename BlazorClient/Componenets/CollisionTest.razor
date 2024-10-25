@@ -1,0 +1,107 @@
+@using Collider
+@inject CollisionEngine Engine
+
+<h1>Hello, world! @(IsBallCollision ? "Ball Collision" : "") @(IsPersonCollision ? "Person Collision" : "")</h1>
+
+<!-- this is a person as a rectangle -->
+<div style="position: absolute; top: @(Person1.Bounds.Y)px; left: @(Person1.Bounds.X)px; width: @(Person1.Bounds.Width)px; height: @(Person1.Bounds.Height)px; background-color: red;">&nbsp;</div>
+
+<div style="position: absolute; top: @(Person2.Bounds.Y)px; left: @(Person2.Bounds.X)px; width: @(Person2.Bounds.Width)px; height: @(Person2.Bounds.Height)px; background-color: green;">&nbsp;</div>
+
+<!-- this is a ball as a circle -->
+<div style="position: absolute; top: @(Ball.Center.Y - Ball.Radius)px; left: @(Ball.Center.X - Ball.Radius)px; width: @(Ball.Radius * 2)px; height: @(Ball.Radius * 2)px; background-color: blue; border-radius: 50%;">&nbsp;</div>
+
+<!-- this is an input for speed -->
+<input type="number" @bind="Speed" />
+
+<!-- this is a button, on click move the ball random -->
+
+<div style="display: inline-flex; flex-direction: column; align-items: center;">
+  <button @onclick="MoveBallUp" style="font-size: 30px; margin-bottom: 5px;">&#8593;</button>
+  <div style="display: flex;">
+    <button @onclick="MoveBallLeft" style="font-size: 30px; margin-right: 5px;">&#8592;</button>
+    <button @onclick="MoveBallRight" style="font-size: 30px; margin-left: 5px;">&#8594;</button>
+  </div>
+  <button @onclick="MoveBallDown" style="font-size: 30px; margin-top: 5px;">&#8595;</button>
+</div>
+
+
+<div style="display: inline-flex; flex-direction: column; align-items: center;">
+  <button @onclick="MovePersonUp" style="font-size: 30px; margin-bottom: 5px;">&#8593;</button>
+  <div style="display: flex;">
+    <button @onclick="MovePersonLeft" style="font-size: 30px; margin-right: 5px;">&#8592;</button>
+    <button @onclick="MovePersonRight" style="font-size: 30px; margin-left: 5px;">&#8594;</button>
+  </div>
+  <button @onclick="MovePersonDown" style="font-size: 30px; margin-top: 5px;">&#8595;</button>
+</div>
+
+@code {
+
+  // create a person and a ball
+  Person Person1 = new Person(150, 300, 100, 150);
+  Person Person2 = new Person(400, 300, 100, 150);
+  
+  Ball Ball = new Ball(300, 300, 25);
+  bool IsBallCollision = false;
+  bool IsPersonCollision = false;
+  int Speed = 10;
+  void MoveBallRight()
+  {
+    Ball.Move(Speed, 0);
+    CheckCollisions();
+  }
+  
+  void MoveBallLeft()
+  {
+    Ball.Move(-Speed, 0);
+    CheckCollisions();
+  }
+  
+  void MoveBallUp()
+  {
+    Ball.Move(0, -Speed);
+    CheckCollisions();
+  }
+  
+  void MoveBallDown()
+  {
+    Ball.Move(0, Speed);
+    CheckCollisions();
+  }
+  
+  void MovePersonRight()
+  {
+    Person1.Move(Speed, 0);
+    CheckCollisions();
+  }
+  
+  void MovePersonLeft()
+  {
+    Person1.Move(-Speed, 0);
+    CheckCollisions();
+  }
+  
+  void MovePersonUp()
+  {
+    Person1.Move(0, -Speed);
+    CheckCollisions();
+  }
+  
+  void MovePersonDown()
+  {
+    Person1.Move(0, Speed);
+    CheckCollisions();
+  }
+
+  void CheckCollisions()
+  {
+    IsBallCollision = Ball.CollidesWith(Person1, Engine) || Ball.CollidesWith(Person2, Engine);
+    IsPersonCollision = Person1.CollidesWith(Person2, Engine);
+    StateHasChanged();
+  }
+
+  protected override void OnInitialized()
+  { 
+    CheckCollisions();
+  }
+}
